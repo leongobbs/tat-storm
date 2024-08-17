@@ -1,5 +1,4 @@
 import Card from "@components/Card.tsx";
-
 import { CardDetail } from "@interfaces/card.ts";
 
 type Props = {
@@ -9,8 +8,8 @@ type Props = {
 export default function Cards({ cards }: Props) {
   return (
     <div class="grid gap-4 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
-      {cards.map((card) => (
-        <Card {...card} />
+      {cards.map((card, index) => (
+        <Card key={index} {...card} />
       ))}
     </div>
   );

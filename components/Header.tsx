@@ -4,10 +4,10 @@ export default function Header() {
   return (
     <div class="w-full px-4 py-10 flex flex-row justify-between items-center">
       <div class="flex items-center">
-        <i class="ti ti-at text-3xl md:text-4xl" />
+      <img src="/favicon.ico" alt="Логотип" class="w-10 h-10 md:w-10 md:h-10" />
         <span class="ml-3 font-medium text-md md:text-lg">
-          <p>Tatnefs</p>
-          <p>Data Dashboard</p>
+          <p>Intellico</p>
+          <p>Интеллектуальный Центр Управления</p>
         </span>
       </div>
       <div class="space-x-2 md:space-x-4">

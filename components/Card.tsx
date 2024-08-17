@@ -1,16 +1,12 @@
 import { CardDetail } from "@interfaces/card.ts";
 
-export default function Card({ title, count, icon }: CardDetail) {
+export default function Card({ title, count, icon, link }: CardDetail) {
   return (
-    <div class="px-8 py-4 w-80 md:w-96 h-32 flex flex-row justify-between items-center bg-card rounded-md shadow-sm">
-      <span class="space-y-1">
-        <p class="text-sm md:text-base">{title}</p>
-        <p class="font-medium text-3xl md:text-4xl">
-          {count}
-          <span class="ml-1 text-sm md:text-base">件</span>
-        </p>
+    <a href={link || "#"} class="block px-8 py-4 w-80 md:w-96 h-32 flex justify-between items-center bg-card rounded-md shadow-sm hover:bg-card-hover transition duration-200">
+      <img src={`/icons/${icon}`} class="text-icon text-6xl md:text-7xl w-10 h-10 md:w-10 md:h-10 relative top-7" />
+      <span class="flex-1 flex justify-end  h-full">
+        <p class="text-sm md:text-base text-right">{title}</p>
       </span>
-      <i class={`ti ti-${icon} text-icon text-6xl md:text-7xl`} />
-    </div>
+    </a>
   );
 }
