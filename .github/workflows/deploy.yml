@@ -27,13 +27,10 @@ jobs:
       - name: Build step
         run: "deno task build"
 
-      - name: Authenticate with Deno Deploy
-        run: |
-          deno deploy --project=leongobbs-tat-storm-49 --token=${{ secrets.DENO_DEPLOY_TOKEN }}
-
       - name: Upload to Deno Deploy
         uses: denoland/deployctl@v1
         with:
           project: "leongobbs-tat-storm-49"
           entrypoint: "main.ts"
           root: "."
+          token: ${{ secrets.DENO_DEPLOY_TOKEN }}
