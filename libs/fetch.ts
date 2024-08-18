@@ -1,20 +1,20 @@
 import { CardDetail } from "@interfaces/card.ts";
 import { ImasparqlResponse, Binding } from "@interfaces/imasparql.ts";
 
-const endpointUrl = "http://localhost:3030/MyDataset/sparql"; // Замените MyDataset на ваше фактическое имя
+const endpointUrl = "https://ffa6-37-235-54-71.ngrok-free.app/MyDataset/sparql"; // Замените MyDataset на ваше фактическое имя
 
 const query = `
 PREFIX schema: <http://schema.org/>
 PREFIX ex: <http://example.org/>
 
-SELECT ?class ?label ?count ?icon ?link WHERE {
+SELECT ?class ?label ?count ?icon ?position WHERE {
   ?class a schema:MenuItem ;
          schema:name ?label ;
          schema:icon ?icon ;
          schema:count ?count ;
-         ex:link ?link .
+         schema:position ?position .
 }
-ORDER BY ?class
+ORDER BY ?position
 `;
 
 export async function fetchCardDetails(): Promise<CardDetail[] | undefined> {
@@ -27,16 +27,13 @@ export async function fetchCardDetails(): Promise<CardDetail[] | undefined> {
   try {
     const res = await fetch(url.toString(), { signal: ctrl.signal });
 
-    // Отладочный вывод заголовков ответа
-    console.log("Content-Type:", res.headers.get("content-type"));
-
     if (!res.ok) {
       console.error(`Ошибка: ${res.status} ${res.statusText}`);
       return;
     }
 
     const contentType = res.headers.get("content-type");
-    if (!contentType || !contentType.includes("json")) {  // Проверка на наличие "json" в Content-Type
+    if (!contentType || !contentType.includes("json")) {
       console.error("Ответ не является JSON");
       return;
     }
@@ -51,14 +48,13 @@ export async function fetchCardDetails(): Promise<CardDetail[] | undefined> {
   }
 }
 
-
 export function createCardDetails(response: ImasparqlResponse): CardDetail[] {
   return response.results.bindings.map((binding: Binding) => {
     return {
       title: binding.label?.value || "",
       count: binding.count.value,
       icon: binding.icon.value,
-      link: binding.link?.value || "#", // Добавлено свойство link
+      position: binding.position.value, // Добавляем позицию
     };
   });
 }

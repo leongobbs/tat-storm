@@ -3,6 +3,7 @@ interface Value {
 }
 
 export interface Binding {
+  position: Value;
   link: Value;
   icon: Value;
   class: Value;
