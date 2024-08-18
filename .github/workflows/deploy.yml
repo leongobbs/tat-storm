@@ -1,5 +1,4 @@
 name: Deploy
-
 on:
   push:
     branches: main
@@ -12,8 +11,8 @@ jobs:
     runs-on: ubuntu-latest
 
     permissions:
-      id-token: write # Required for OIDC authentication
-      contents: read  # Needed to clone the repository
+      id-token: write # Needed for auth with Deno Deploy
+      contents: read # Needed to clone the repository
 
     steps:
       - name: Clone repository
@@ -25,11 +24,11 @@ jobs:
           deno-version: v1.x
 
       - name: Build step
-        run: deno task build
+        run: "deno task build"
 
-      - name: Deploy to Deno Deploy
+      - name: Upload to Deno Deploy
         uses: denoland/deployctl@v1
         with:
-          project: "leongobbs-tat-storm-49"
+          project: "aitatneft"
           entrypoint: "main.ts"
           root: "."
