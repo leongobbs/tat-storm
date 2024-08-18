@@ -2,8 +2,8 @@ import { asset, Head } from "$fresh/runtime.ts";
 import { AppProps } from "$fresh/server.ts";
 
 export default function App(props: AppProps) {
-  const title = "AI Оценка производительности ремонтных бригад";
-  const desc = "Мониторинг и Анализ эффективности ремонтных бригад для обеспечения соблюдения норм безопасности и предотвращение инцидентов за счет обнаружения неправильных действий в близи опасного оборудования путем CV анализа поз и движений в реальном времени.";
+  const title = "Intellico";
+  const desc = "Интеллектуальный Центр Управления";
 
   return (
     <>
@@ -14,6 +14,7 @@ export default function App(props: AppProps) {
         <meta property="og:description" content={desc} />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={desc} />
+        <meta property="og:image" content="/in.webp" />
         <link
           rel="stylesheet"
           href={asset(
