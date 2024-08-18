@@ -6,53 +6,53 @@ ex:Home a schema:MenuItem ;
     schema:position "1" ;
     schema:icon "home-icon.svg" ;
     schema:count "10" ;
-    ex:link "http://localhost:8000/main" .
+    ex:link "https://intellico.deno.dev/main" .
 
 ex:DivisionOverview a schema:MenuItem ;
     schema:name "Обзор по подразделениям" ;
     schema:position "2" ;
     schema:icon "division-icon.svg" ;
     schema:count "5" ;
-    ex:link "http://localhost:8000/divisions" .
+    ex:link "https://intellico.deno.dev/divisions" .
 
 ex:Analytics a schema:MenuItem ;
     schema:name "Аналитика" ;
     schema:position "3" ;
     schema:icon "analytics-icon.svg" ;
     schema:count "7" ;
-    ex:link "http://localhost:8000/analytics" .
+    ex:link "https://intellico.deno.dev/analytics" .
 
 ex:Reports a schema:MenuItem ;
     schema:name "Отчеты" ;
     schema:position "4" ;
     schema:icon "reports-icon.svg" ;
     schema:count "3" ;
-    ex:link "http://localhost:8000/reports" .
+    ex:link "https://intellico.deno.dev/reports" .
 
 ex:EventHistory a schema:MenuItem ;
     schema:name "История событий" ;
     schema:position "5" ;
     schema:icon "event-history-icon.svg" ;
     schema:count "8" ;
-    ex:link "http://localhost:8000/events" .
+    ex:link "https://intellico.deno.dev/events" .
 
 ex:Settings a schema:MenuItem ;
     schema:name "Настройки" ;
     schema:position "6" ;
     schema:icon "settings-icon.svg" ;
     schema:count "2" ;
-    ex:link "http://localhost:8000/settings" .
+    ex:link "https://intellico.deno.dev/settings" .
 
 ex:Help a schema:MenuItem ;
     schema:name "Помощь" ;
     schema:position "7" ;
     schema:icon "help-icon.svg" ;
     schema:count "1" ;
-    ex:link "http://localhost:8000/help" .
+    ex:link "https://intellico.deno.dev/help" .
 
 ex:Profile a schema:MenuItem ;
     schema:name "Профиль" ;
     schema:position "8" ;
     schema:icon "profile-icon.svg" ;
     schema:count "4" ;
-    ex:link "http://localhost:8000/profile" .
+    ex:link "https://intellico.deno.dev/profile" .
