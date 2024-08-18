@@ -7,12 +7,13 @@ const query = `
 PREFIX schema: <http://schema.org/>
 PREFIX ex: <http://example.org/>
 
-SELECT ?class ?label ?count ?icon ?position WHERE {
+SELECT ?class ?label ?count ?icon ?position ?link WHERE {
   ?class a schema:MenuItem ;
          schema:name ?label ;
          schema:icon ?icon ;
          schema:count ?count ;
-         schema:position ?position .
+         schema:position ?position ;
+         ex:link ?link .
 }
 ORDER BY ?position
 `;
@@ -49,12 +50,18 @@ export async function fetchCardDetails(): Promise<CardDetail[] | undefined> {
 }
 
 export function createCardDetails(response: ImasparqlResponse): CardDetail[] {
+  // Определяем, работаем ли мы на локальном сервере или на продакшн
+  const isLocalhost = typeof Deno !== "undefined" && Deno.env.get("DENO_DEPLOYMENT_ID") === undefined;
+  const baseUrl = isLocalhost ? "http://localhost:8000" : "https://intellico.deno.dev";
+
   return response.results.bindings.map((binding: Binding) => {
+    // Формируем ссылку с учетом baseUrl
+    const link = binding.link?.value ? (binding.link.value.startsWith("http") ? binding.link.value : `${baseUrl}${binding.link.value}`) : "#";
     return {
       title: binding.label?.value || "",
       count: binding.count.value,
       icon: binding.icon.value,
-      position: binding.position.value, // Добавляем позицию
+      link: link,  // Используем сформированную ссылку
     };
   });
 }
