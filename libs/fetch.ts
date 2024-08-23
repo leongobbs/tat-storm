@@ -1,7 +1,7 @@
 import { CardDetail } from "@interfaces/card.ts";
 import { ImasparqlResponse, Binding } from "@interfaces/imasparql.ts";
 
-const endpointUrl = "https://ffa6-37-235-54-71.ngrok-free.app/MyDataset/sparql"; // Замените MyDataset на ваше фактическое имя
+const endpointUrl = "https://928b-37-235-54-71.ngrok-free.app/MyDataset/sparql"; // Замените MyDataset на ваше фактическое имя
 
 const query = `
 PREFIX schema: <http://schema.org/>
